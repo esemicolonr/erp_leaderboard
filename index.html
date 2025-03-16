@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Leaderboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .background-image {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+        
+        .leaderboard-entry {
+            position: absolute;
+            text-align: center;
+            font-weight: bold;
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateX(-50%);
+        }
+        
+        .username {
+            font-size: 12px;
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #fff;
+            text-shadow: 2px 2px 2px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .points {
+            font-size: 10px;
+            color: #ffcc00;
+            text-shadow: 1px 1px 1px #000;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1px 3px;
+            border-radius: 2px;
+            margin-top: 2px;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .active {
+            background-color: rgba(0, 255, 0, 0.3);
+            color: #0f0;
+        }
+        
+        .inactive {
+            background-color: rgba(255, 0, 0, 0.3);
+            color: #f00;
+        }
+        
+        /* Positions for each robot pod based on the image */
+        /* These percentages will need fine-tuning based on the actual image dimensions */
+        #position-1 { top: 7%; left: 34.5%; }
+        #position-2 { top: 7%; left: 41.5%; }
+        #position-3 { top: 7%; left: 48.5%; }
+        #position-4 { top: 7%; left: 55.5%; }
+        #position-5 { top: 23%; left: 7.5%; }
+        #position-6 { top: 23%; left: 14.5%; }
+        #position-7 { top: 23%; left: 21.5%; }
+        #position-8 { top: 23%; left: 28.5%; }
+        #position-9 { top: 23%; left: 35.5%; }
+        #position-10 { top: 23%; left: 42.5%; }
+        #position-11 { top: 23%; left: 49.5%; }
+        #position-12 { top: 23%; left: 56.5%; }
+        #position-13 { top: 23%; left: 63.5%; }
+        #position-14 { top: 39%; left: 7.5%; }
+        #position-15 { top: 39%; left: 35.5%; }
+        #position-16 { top: 39%; left: 42.5%; }
+        #position-17 { top: 39%; left: 49.5%; }
+        #position-18 { top: 39%; left: 56.5%; }
+        #position-19 { top: 39%; left: 63.5%; }
+        #position-20 { top: 55%; left: 7.5%; }
+        #position-21 { top: 55%; left: 14.5%; }
+        #position-22 { top: 55%; left: 35.5%; }
+        #position-23 { top: 55%; left: 42.5%; }
+        #position-24 { top: 55%; left: 49.5%; }
+        #position-25 { top: 55%; left: 56.5%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="robot_background.jpg" alt="Robot Leaderboard" class="background-image">
+        
+        <div id="status" class="status-indicator inactive">OFFLINE</div>
+        
+        <!-- Containers for each leaderboard position -->
+        <div id="position-1" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-2" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-3" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-4" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-5" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-6" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-7" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-8" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-9" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-10" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-11" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-12" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-13" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-14" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-15" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-16" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-17" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-18" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-19" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-20" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-21" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-22" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-23" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-24" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+        <div id="position-25" class="leaderboard-entry">
+            <div class="username"></div>
+            <div class="points"></div>
+        </div>
+    </div>
+
+    <script>
+        // API URL - replace with your actual backend URL when deployed
+        const API_URL = 'https://erp-leaderboard-api.onrender.com';
+        const REFRESH_INTERVAL = 300000; // Refresh every 30 seconds
+        const INACTIVITY_THRESHOLD_MINUTES = 15; // Consider stream inactive after 15 minutes of no updates
+        
+        // Function to fetch and update leaderboard
+        async function updateLeaderboard() {
+            try {
+                const response = await fetch(`${API_URL}?minutes=${INACTIVITY_THRESHOLD_MINUTES}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                
+                // Update stream status indicator
+                const statusElement = document.getElementById('status');
+                if (data.status === 'active') {
+                    statusElement.textContent = 'STREAM ACTIVE';
+                    statusElement.className = 'status-indicator active';
+                    
+                    // Update positions with data
+                    data.users.forEach(user => {
+                        const position = document.getElementById(`position-${user.position}`);
+                        if (position) {
+                            position.querySelector('.username').textContent = user.username;
+                            position.querySelector('.points').textContent = user.points;
+                        }
+                    });
+                } else {
+                    statusElement.textContent = 'STREAM OFFLINE';
+                    statusElement.className = 'status-indicator inactive';
+                    
+                    // Clear all positions if stream is inactive
+                    clearLeaderboard();
+                }
+                
+            } catch (error) {
+                console.error('Error fetching leaderboard:', error);
+                
+                // Handle connection errors by marking stream as offline
+                const statusElement = document.getElementById('status');
+                statusElement.textContent = 'CONNECTION ERROR';
+                statusElement.className = 'status-indicator inactive';
+            }
+        }
+        
+        // Function to clear the leaderboard
+        function clearLeaderboard() {
+            for (let i = 1; i <= 25; i++) {
+                const position = document.getElementById(`position-${i}`);
+                if (position) {
+                    position.querySelector('.username').textContent = '';
+                    position.querySelector('.points').textContent = '';
+                }
+            }
+        }
+        
+        // Initial update
+        updateLeaderboard();
+        
+        // Set up periodic refresh
+        setInterval(updateLeaderboard, REFRESH_INTERVAL);
+    </script>
+</body>
+</html>
