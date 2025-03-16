@@ -10,7 +10,7 @@ import json
 from models import User, Base
 
 app = Flask(__name__)
-CORS(app)  # Enable cross-origin requests
+CORS(app, resources={r"/api/*": {"origins": "https://esemicolonr.github.io"}})
 
 # Database connection
 def get_db_connection():
@@ -73,6 +73,13 @@ def get_leaderboard():
 def get_status():
     return jsonify({
         'status': 'online',
+        'timestamp': datetime.utcnow().isoformat()
+    })
+
+@app.route('/api/test', methods=['GET'])
+def test():
+    return jsonify({
+        'message': 'API is working',
         'timestamp': datetime.utcnow().isoformat()
     })
 
