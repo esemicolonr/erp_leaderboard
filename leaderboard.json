@@ -1,5 +1,11 @@
 {
-  "status": "inactive",
-  "users": [],
-  "timestamp": "2025-03-17T01:09:08.970223"
+  "status": "active",
+  "users": [
+    {
+      "position": 1,
+      "username": "Puppygami Pyuk",
+      "points": 43.5
+    }
+  ],
+  "timestamp": "2025-03-17T01:14:09.585185"
 }
